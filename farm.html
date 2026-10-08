@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta name="theme-color" content="#07140d">
+
+<title>Our Farm | Sir Himanshu's Tabela</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #07140d;
+    color: white;
+
+    overflow-x: hidden;
+
+    cursor: none;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(70,150,60,.24),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(120,190,60,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(20,110,60,.20),
+            transparent 35%
+        ),
+        #07140d;
+}
+
+.background::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: -180px;
+    top: 15%;
+
+    border-radius: 50%;
+
+    background: rgba(100,255,80,.08);
+
+    filter: blur(100px);
+
+    animation: glowOne 12s ease-in-out infinite alternate;
+}
+
+.background::after {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    bottom: 10%;
+
+    border-radius: 50%;
+
+    background: rgba(40,190,90,.07);
+
+    filter: blur(100px);
+
+    animation: glowTwo 14s ease-in-out infinite alternate;
+}
+
+@keyframes glowOne {
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(220px,100px);
+    }
+}
+
+@keyframes glowTwo {
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-220px,-100px);
+    }
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.particle {
+    position: fixed;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #a9ff71;
+
+    opacity: .3;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    animation: particleMove linear infinite;
+}
+
+.p1 {
+    left: 8%;
+    animation-duration: 14s;
+}
+
+.p2 {
+    left: 23%;
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.p3 {
+    left: 42%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+
+.p4 {
+    left: 61%;
+    animation-duration: 16s;
+    animation-delay: 1s;
+}
+
+.p5 {
+    left: 78%;
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+
+.p6 {
+    left: 93%;
+    animation-duration: 15s;
+    animation-delay: 5s;
+}
+
+@keyframes particleMove {
+    from {
+        transform: translateY(110vh) scale(.5);
+    }
+
+    to {
+        transform: translateY(-10vh) scale(1.3);
+    }
+}
+
+
+/* =====================================================
+   DESKTOP CURSOR
+===================================================== */
+
+.cursor-dot {
+    position: fixed;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #a1ff69;
+
+    box-shadow: 0 0 15px #a1ff69;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transform: translate(-50%,-50%);
+}
+
+.cursor-ring {
+    position: fixed;
+
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid rgba(160,255,120,.65);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    transform: translate(-50%,-50%);
+
+    transition:
+        width .2s ease,
+        height .2s ease,
+        border .2s ease;
+}
+
+.cursor-ring.active {
+    width: 55px;
+    height: 55px;
+
+    border-color: #d6ffb9;
+}
+
+
+/* =====================================================
+   MAIN NAVIGATION BAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+
+    top: max(12px, env(safe-area-inset-top));
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(94%, 1250px);
+
+    min-height: 68px;
+
+    padding: 9px 12px 9px 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background:
+        rgba(7,27,15,.90);
+
+    border:
+        1px solid rgba(150,255,110,.22);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    z-index: 5000;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #efffe7;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    letter-spacing: .2px;
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #91ed61;
+
+    box-shadow:
+        0 0 12px #91ed61;
+}
+
+.logo span {
+    color: #91f25d;
+}
+
+
+/* =====================================================
+   COMPUTER MENU BAR
+===================================================== */
+
+.desktop-menu {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 3px;
+
+    list-style: none;
+
+    flex: 1;
+}
+
+.desktop-menu li {
+    display: flex;
+}
+
+.desktop-menu a {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 13px;
+
+    border-radius: 13px;
+
+    color: #dcebd8;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.desktop-menu a:hover {
+    color: #aaff7c;
+
+    background:
+        rgba(145,237,97,.10);
+
+    transform: translateY(-2px);
+}
+
+.desktop-menu a.active {
+    color: #aaff7c;
+
+    background:
+        rgba(145,237,97,.14);
+
+    border:
+        1px solid rgba(145,237,97,.20);
+
+    box-shadow:
+        0 0 20px rgba(145,237,97,.07);
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.mobile-menu-button {
+    display: none;
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(145,237,97,.25);
+
+    border-radius: 14px;
+
+    background:
+        rgba(145,237,97,.12);
+
+    cursor: pointer;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.mobile-menu-button span {
+    display: block;
+
+    width: 23px;
+    height: 2.5px;
+
+    border-radius: 10px;
+
+    background: #c7ffae;
+
+    transition: .3s ease;
+}
+
+.mobile-menu-button.open span:nth-child(1) {
+    transform:
+        translateY(7.5px)
+        rotate(45deg);
+}
+
+.mobile-menu-button.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-button.open span:nth-child(3) {
+    transform:
+        translateY(-7.5px)
+        rotate(-45deg);
+}
+
+
+/* =====================================================
+   MOBILE MENU OVERLAY
+===================================================== */
+
+.mobile-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.52);
+
+    backdrop-filter:
+        blur(3px);
+
+    -webkit-backdrop-filter:
+        blur(3px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s ease;
+
+    z-index: 4500;
+}
+
+.mobile-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =====================================================
+   MOBILE MENU PANEL
+===================================================== */
+
+.mobile-menu {
+    position: fixed;
+
+    top: 91px;
+
+    right: 3%;
+
+    width: min(390px, 92%);
+
+    padding: 10px;
+
+    background:
+        rgba(6,25,14,.98);
+
+    border:
+        1px solid rgba(145,237,97,.22);
+
+    border-radius: 22px;
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.65);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-15px)
+        scale(.97);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s ease;
+
+    z-index: 4800;
+}
+
+.mobile-menu.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.mobile-menu-title {
+    padding:
+        13px 15px 10px;
+
+    color: #8eea61;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.mobile-menu a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 54px;
+
+    padding:
+        0 15px;
+
+    margin-bottom: 4px;
+
+    border-radius: 14px;
+
+    color: #e7f7e2;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition:
+        .25s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+    color: #aaff7c;
+
+    background:
+        rgba(145,237,97,.11);
+}
+
+.mobile-menu-icon {
+    width: 30px;
+
+    text-align: center;
+
+    font-size: 19px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100svh;
+    min-height: 100vh;
+
+    padding:
+        155px 7% 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+
+    max-width: 950px;
+
+    animation:
+        heroIn 1s ease both;
+}
+
+@keyframes heroIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.small-title {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        9px 18px;
+
+    border:
+        1px solid rgba(160,255,120,.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(130,255,80,.07);
+
+    color: #baff96;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size:
+        clamp(55px, 9vw, 105px);
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #baff98,
+            #72db4f,
+            #ffffff
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        textGradient 5s infinite alternate;
+}
+
+@keyframes textGradient {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 100%;
+    }
+}
+
+.hero p {
+    max-width: 720px;
+
+    margin: auto;
+
+    color: #b9ccb9;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    flex-wrap: wrap;
+
+    margin-top: 32px;
+}
+
+.btn {
+    min-height: 51px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        0 24px;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.btn-primary {
+    color: #10200d;
+
+    background:
+        #91ed61;
+
+    box-shadow:
+        0 0 25px rgba(145,237,97,.18);
+}
+
+.btn-primary:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 0 35px rgba(145,237,97,.4);
+}
+
+.btn-secondary {
+    color: #dcffd1;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(160,255,130,.22);
+}
+
+.btn-secondary:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(130,255,80,.09);
+}
+
+
+/* =====================================================
+   GENERAL SECTIONS
+===================================================== */
+
+section {
+    padding:
+        100px 6%;
+}
+
+.section-title {
+    max-width: 750px;
+
+    margin:
+        0 auto 55px;
+
+    text-align: center;
+}
+
+.section-title .tag {
+    color: #94ee68;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    font-weight: 700;
+}
+
+.section-title h2 {
+    margin-top: 12px;
+
+    font-size:
+        clamp(32px,5vw,55px);
+
+    line-height: 1.05;
+}
+
+.section-title p {
+    max-width: 650px;
+
+    margin:
+        17px auto 0;
+
+    color: #a9bca8;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   FARM INTRO
+===================================================== */
+
+.farm-intro {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
+    gap: 45px;
+
+    align-items: center;
+}
+
+
+/* =====================================================
+   REAL COW PHOTO
+===================================================== */
+
+.farm-image {
+    width: 100%;
+
+    min-height: 440px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.04),
+            rgba(0,20,10,.42)
+        ),
+        url("cow.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    border:
+        1px solid rgba(180,255,140,.14);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+
+    animation:
+        imageFloat 5s ease-in-out infinite;
+}
+
+.farm-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(70,150,50,.13),
+            transparent 65%
+        );
+}
+
+.farm-image::after {
+    content:
+        "OUR FARM";
+
+    position: absolute;
+
+    left: 25px;
+
+    bottom: 24px;
+
+    color: #d0ffb9;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 2px 12px #000;
+}
+
+@keyframes imageFloat {
+
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+/* =====================================================
+   FARM TEXT
+===================================================== */
+
+.farm-text h3 {
+    font-size:
+        clamp(30px,4vw,40px);
+
+    margin-bottom: 20px;
+
+    line-height: 1.1;
+}
+
+.farm-text h3 span {
+    color: #93ed62;
+}
+
+.farm-text p {
+    color: #b8c9b7;
+
+    line-height: 1.85;
+
+    margin-bottom: 18px;
+}
+
+.farm-points {
+    display: grid;
+
+    gap: 11px;
+
+    margin-top: 25px;
+}
+
+.point {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 58px;
+
+    padding:
+        9px 13px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(180,255,140,.08);
+
+    border-radius: 15px;
+
+    transition:
+        .25s ease;
+}
+
+.point:hover {
+    transform:
+        translateX(7px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.point-icon {
+    width: 38px;
+    height: 38px;
+
+    flex:
+        0 0 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(130,255,80,.11);
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+
+    min-height: 230px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(190,255,150,.11);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    transition:
+        .35s ease;
+}
+
+.feature-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(120,255,70,.08);
+
+    filter: blur(35px);
+}
+
+.feature-card:hover {
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(160,255,120,.3);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.28);
+}
+
+.feature-icon {
+    font-size: 40px;
+
+    margin-bottom: 18px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 21px;
+}
+
+.feature-card p {
+    color: #aebfae;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.daily {
+    max-width: 1050px;
+
+    margin: auto;
+}
+
+.timeline {
+    position: relative;
+
+    display: grid;
+
+    gap: 18px;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #86e85a,
+            transparent
+        );
+}
+
+.time-card {
+    position: relative;
+
+    margin-left: 65px;
+
+    padding:
+        23px 27px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(190,255,150,.10);
+
+    transition:
+        .3s ease;
+}
+
+.time-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: -48px;
+
+    top: 31px;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background:
+        #91ed61;
+
+    box-shadow:
+        0 0 20px #91ed61;
+}
+
+.time-card:hover {
+    transform:
+        translateX(8px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.time {
+    margin-bottom: 7px;
+
+    color: #92ec63;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.time-card h3 {
+    margin-bottom: 8px;
+}
+
+.time-card p {
+    color: #afc0ae;
+
+    line-height: 1.65;
+}
+
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values {
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap: 17px;
+}
+
+.value {
+    padding:
+        30px 17px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(190,255,150,.09);
+
+    transition:
+        .3s ease;
+}
+
+.value:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.value-icon {
+    font-size: 39px;
+}
+
+.value strong {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 18px;
+}
+
+.value span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #9caf9c;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta {
+    position: relative;
+
+    max-width: 1000px;
+
+    margin:
+        25px auto 100px;
+
+    padding:
+        65px 30px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(100,180,70,.15),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(180,255,140,.14);
+}
+
+.cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    left: -120px;
+    top: -200px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(120,255,70,.08);
+
+    filter: blur(80px);
+}
+
+.cta h2 {
+    position: relative;
+
+    font-size:
+        clamp(31px,5vw,50px);
+
+    margin-bottom: 15px;
+}
+
+.cta p {
+    position: relative;
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color: #b8c9b7;
+
+    line-height: 1.7;
+}
+
+.cta .btn {
+    position: relative;
+
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding:
+        35px 20px;
+
+    padding-bottom:
+        max(35px,env(safe-area-inset-bottom));
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(180,255,140,.08);
+
+    color: #849484;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+footer strong {
+    color: #b8e9a0;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width:1100px) {
+
+    .desktop-menu a {
+        padding: 0 9px;
+
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .farm-intro {
+        gap: 30px;
+    }
+
+    .features {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width:800px) {
+
+    body {
+        cursor: auto;
+    }
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+
+
+    /* NAVBAR */
+
+    .navbar {
+        width: 94%;
+
+        min-height: 62px;
+
+        padding:
+            7px 8px 7px 15px;
+
+        border-radius: 18px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .logo-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+
+    /* MOBILE PANEL */
+
+    .mobile-menu {
+        top: 84px;
+
+        right: 3%;
+
+        width: 94%;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 100svh;
+
+        padding:
+            130px 20px 65px;
+    }
+
+    .small-title {
+        font-size: 10px;
+
+        letter-spacing: 1.6px;
+
+        padding:
+            8px 13px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(50px,16vw,72px);
+
+        letter-spacing:
+            -2px;
+
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        width: 100%;
+
+        margin-top: 27px;
+
+        gap: 10px;
+    }
+
+    .btn {
+        min-height: 52px;
+
+        padding:
+            0 20px;
+
+        border-radius: 14px;
+
+        font-size: 14px;
+    }
+
+
+    /* SECTIONS */
+
+    section {
+        padding:
+            72px 17px;
+    }
+
+    .section-title {
+        margin-bottom:
+            38px;
+    }
+
+    .section-title h2 {
+        font-size:
+            clamp(31px,9vw,43px);
+    }
+
+    .section-title p {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    /* FARM */
+
+    .farm-intro {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .farm-image {
+        min-height:
+            min(80vw,390px);
+
+        border-radius: 23px;
+
+        background-position:
+            center center;
+
+        animation: none;
+    }
+
+    .farm-image::after {
+        left: 19px;
+
+        bottom: 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+    .farm-text h3 {
+        font-size: 31px;
+    }
+
+    .farm-text p {
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+    .farm-points {
+        margin-top: 21px;
+
+        gap: 9px;
+    }
+
+    .point {
+        min-height: 55px;
+
+        padding:
+            8px 11px;
+
+        font-size: 14px;
+    }
+
+    .point-icon {
+        width: 36px;
+        height: 36px;
+
+        flex-basis: 36px;
+    }
+
+
+    /* FEATURES */
+
+    .features {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .feature-card {
+        min-height: auto;
+
+        padding:
+            24px 21px;
+
+        border-radius: 20px;
+    }
+
+    .feature-card:hover {
+        transform: none;
+    }
+
+    .feature-icon {
+        font-size: 36px;
+
+        margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+        font-size: 20px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline {
+        gap: 13px;
+    }
+
+    .timeline::before {
+        left: 16px;
+    }
+
+    .time-card {
+        margin-left: 43px;
+
+        padding:
+            20px 17px;
+
+        border-radius: 17px;
+    }
+
+    .time-card::before {
+        left: -34px;
+
+        top: 26px;
+
+        width: 12px;
+        height: 12px;
+    }
+
+    .time-card:hover {
+        transform: none;
+    }
+
+    .time-card h3 {
+        font-size: 18px;
+    }
+
+    .time-card p {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+
+    /* VALUES */
+
+    .values {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 11px;
+    }
+
+    .value {
+        padding:
+            23px 10px;
+
+        border-radius: 18px;
+    }
+
+    .value-icon {
+        font-size: 34px;
+    }
+
+    .value strong {
+        font-size: 16px;
+    }
+
+    .value span {
+        font-size: 12px;
+
+        line-height: 1.45;
+    }
+
+
+    /* CTA */
+
+    .cta {
+        margin:
+            10px 17px 65px;
+
+        padding:
+            45px 20px;
+
+        border-radius: 25px;
+    }
+
+    .cta h2 {
+        font-size: 32px;
+    }
+
+    .cta p {
+        font-size: 14px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width:390px) {
+
+    .navbar {
+        width: 93%;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .mobile-menu-button {
+        width: 46px;
+        height: 46px;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .farm-image {
+        min-height: 280px;
+    }
+
+    .values {
+        gap: 8px;
+    }
+
+    .value {
+        padding:
+            20px 7px;
+    }
+
+    .value span {
+        font-size: 11px;
+    }
+
+    .cta {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+
+        transform: none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-dot"></div>
+
+        Sir Himanshu's
+        <span>Tabela</span>
+
+    </div>
+
+
+    <!-- COMPUTER MENU -->
+
+    <ul class="desktop-menu">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="cows.html">
+                Cows
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="farm.html" class="active">
+                Our Farm
+            </a>
+        </li>
+
+        <li>
+            <a href="meet.html">
+                Meet Sir
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+
+    <!-- PHONE MENU BUTTON -->
+
+    <button
+        class="mobile-menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     MOBILE OVERLAY
+===================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
+
+    <div class="mobile-menu-title">
+        NAVIGATION
+    </div>
+
+
+    <a href="index.html">
+
+        <span class="mobile-menu-icon">
+            🏠
+        </span>
+
+        Home
+
+    </a>
+
+
+    <a href="cows.html">
+
+        <span class="mobile-menu-icon">
+            🐄
+        </span>
+
+        Cows
+
+    </a>
+
+
+    <a href="products.html">
+
+        <span class="mobile-menu-icon">
+            🥛
+        </span>
+
+        Products
+
+    </a>
+
+
+    <a href="farm.html" class="active">
+
+        <span class="mobile-menu-icon">
+            🌱
+        </span>
+
+        Our Farm
+
+    </a>
+
+
+    <a href="Meet.html">
+
+        <span class="mobile-menu-icon">
+            👨‍🌾
+        </span>
+
+        Meet Sir
+
+    </a>
+
+
+    <a href="contact.html">
+
+        <span class="mobile-menu-icon">
+            📞
+        </span>
+
+        Contact
+
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            WELCOME TO OUR FARM
+        </div>
+
+
+        <h1>
+            OUR FARM
+        </h1>
+
+
+        <p>
+
+            A place where care, cleanliness and
+            dedication come together. Discover the
+            daily life, values and environment of
+            Sir Himanshu's Tabela.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#about"
+                class="btn btn-primary"
+            >
+                Explore Farm
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="btn btn-secondary"
+            >
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     ABOUT FARM
+===================================================== -->
+
+<section id="about">
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            ABOUT THE FARM
+        </div>
+
+        <h2>
+            More Than Just A Tabela
+        </h2>
+
+        <p>
+
+            Our farm is built around responsible care,
+            a clean environment and everyday attention
+            to the animals.
+
+        </p>
+
+    </div>
+
+
+    <div class="farm-intro">
+
+
+        <div class="farm-image reveal"></div>
+
+
+        <div class="farm-text reveal">
+
+            <h3>
+                Welcome to
+                <span>Our Farm</span>
+            </h3>
+
+
+            <p>
+
+                Sir Himanshu's Tabela is a place where
+                the animals are cared for with attention
+                and responsibility.
+
+            </p>
+
+
+            <p>
+
+                From feeding and cleaning to maintaining
+                a comfortable environment, every part
+                of the farm is handled with regular care.
+
+            </p>
+
+
+            <div class="farm-points">
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        🌱
+                    </div>
+
+                    <span>
+                        Clean and natural surroundings
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        🐄
+                    </div>
+
+                    <span>
+                        Proper care of our cattle
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        💧
+                    </div>
+
+                    <span>
+                        Fresh water and regular cleaning
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        ❤️
+                    </div>
+
+                    <span>
+                        Care, responsibility and dedication
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            FARM FEATURES
+        </div>
+
+        <h2>
+            What Makes Our Farm Special
+        </h2>
+
+        <p>
+
+            The farm focuses on the basic things that
+            matter every day: care, cleanliness,
+            nutrition and a healthy environment.
+
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🐄
+            </div>
+
+            <h3>
+                Healthy Cattle
+            </h3>
+
+            <p>
+
+                Our cattle are given regular attention
+                and proper daily care to maintain a
+                comfortable environment.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🌾
+            </div>
+
+            <h3>
+                Proper Feeding
+            </h3>
+
+            <p>
+
+                Feeding is an important part of farm
+                management and is handled as part
+                of the daily routine.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🧹
+            </div>
+
+            <h3>
+                Clean Environment
+            </h3>
+
+            <p>
+
+                Regular cleaning helps maintain a
+                cleaner and more comfortable space
+                for the animals.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                💧
+            </div>
+
+            <h3>
+                Fresh Water
+            </h3>
+
+            <p>
+
+                Fresh and accessible water is an
+                important part of maintaining the
+                animals' daily needs.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🌿
+            </div>
+
+            <h3>
+                Natural Surroundings
+            </h3>
+
+            <p>
+
+                Green surroundings provide the farm
+                with a peaceful and natural atmosphere.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Personal Care
+            </h3>
+
+            <p>
+
+                Regular observation and personal
+                attention are important parts of
+                the way our farm is managed.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DAILY ROUTINE
+===================================================== -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            DAILY ROUTINE
+        </div>
+
+        <h2>
+            Life At The Farm
+        </h2>
+
+        <p>
+
+            A farm is built through small tasks
+            performed consistently every day.
+
+        </p>
+
+    </div>
+
+
+    <div class="daily">
+
+        <div class="timeline">
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    MORNING
+                </div>
+
+                <h3>
+                    Start of the Day
+                </h3>
+
+                <p>
+
+                    The day begins with checking the
+                    cattle, preparing their surroundings
+                    and taking care of their basic needs.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    DAYTIME
+                </div>
+
+                <h3>
+                    Feeding & Care
+                </h3>
+
+                <p>
+
+                    Feeding, water and regular observation
+                    form an important part of the daytime
+                    routine.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    AFTERNOON
+                </div>
+
+                <h3>
+                    Cleaning & Maintenance
+                </h3>
+
+                <p>
+
+                    The farm surroundings are maintained
+                    so that the animals have a cleaner
+                    and more comfortable space.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    EVENING
+                </div>
+
+                <h3>
+                    Evening Care
+                </h3>
+
+                <p>
+
+                    Another round of feeding, water and
+                    observation helps complete the
+                    daily routine.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            OUR VALUES
+        </div>
+
+        <h2>
+            What We Believe In
+        </h2>
+
+    </div>
+
+
+    <div class="values">
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                ❤️
+            </div>
+
+            <strong>
+                Care
+            </strong>
+
+            <span>
+                Treating our animals with attention
+                and responsibility.
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                ✨
+            </div>
+
+            <strong>
+                Cleanliness
+            </strong>
+
+            <span>
+                Keeping the farm environment clean
+                and maintained.
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                🌱
+            </div>
+
+            <strong>
+                Nature
+            </strong>
+
+            <span>
+                Maintaining a peaceful and natural
+                farm environment.
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                🤝
+            </div>
+
+            <strong>
+                Trust
+            </strong>
+
+            <span>
+                Building a farm based on responsibility
+                and honesty.
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<div class="cta reveal">
+
+    <h2>
+        Want To Know More?
+    </h2>
+
+    <p>
+
+        Explore our cattle, discover our products
+        or get in touch with Sir Himanshu's Tabela.
+
+    </p>
+
+    <a
+        href="contact.html"
+        class="btn btn-primary"
+    >
+        Contact Us
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026
+
+    <strong>
+        Sir Himanshu's Tabela
+    </strong>
+
+    <br>
+
+    Built with care • Designed by Tanishk
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const mobileOverlay =
+    document.getElementById("mobileOverlay");
+
+
+function openMenu() {
+
+    menuButton.classList.add("open");
+
+    mobileMenu.classList.add("show");
+
+    mobileOverlay.classList.add("show");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeMenu() {
+
+    menuButton.classList.remove("open");
+
+    mobileMenu.classList.remove("show");
+
+    mobileOverlay.classList.remove("show");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    document.body.style.overflow = "";
+}
+
+
+menuButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        if (
+            mobileMenu.classList.contains("show")
+        ) {
+
+            closeMenu();
+
+        } else {
+
+            openMenu();
+
+        }
+
+    }
+);
+
+
+/* CLOSE WITH OVERLAY */
+
+mobileOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+/* CLOSE AFTER NAVIGATION */
+
+mobileMenu
+.querySelectorAll("a")
+.forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        closeMenu
+    );
+
+});
+
+
+/* ESCAPE KEY */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+const dot =
+    document.querySelector(".cursor-dot");
+
+const ring =
+    document.querySelector(".cursor-ring");
+
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        if (
+            window.innerWidth <= 800
+        ) {
+            return;
+        }
+
+        dot.style.left =
+            event.clientX + "px";
+
+        dot.style.top =
+            event.clientY + "px";
+
+        ring.style.left =
+            event.clientX + "px";
+
+        ring.style.top =
+            event.clientY + "px";
+
+    }
+);
+
+
+/* CURSOR HOVER */
+
+document
+.querySelectorAll(
+    "a, button, .feature-card, .point, .value, .time-card"
+)
+.forEach(function(element) {
+
+    element.addEventListener(
+        "mouseenter",
+        function() {
+
+            if (
+                window.innerWidth > 800
+            ) {
+
+                ring.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        function() {
+
+            ring.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:
+                window.innerWidth <= 800
+                    ? 0.08
+                    : 0.12
+        }
+
+    );
+
+
+revealElements.forEach(
+    function(element) {
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =====================================================
+   DESKTOP 3D CARD EFFECT
+===================================================== */
+
+document
+.querySelectorAll(".feature-card")
+.forEach(function(card) {
+
+
+    card.addEventListener(
+        "mousemove",
+        function(event) {
+
+            if (
+                window.innerWidth <= 800
+            ) {
+                return;
+            }
+
+
+            const rect =
+                card.getBoundingClientRect();
+
+
+            const x =
+                event.clientX -
+                rect.left;
+
+
+            const y =
+                event.clientY -
+                rect.top;
+
+
+            const centerX =
+                rect.width / 2;
+
+
+            const centerY =
+                rect.height / 2;
+
+
+            const rotateX =
+                ((y - centerY) /
+                centerY) * -3;
+
+
+            const rotateY =
+                ((x - centerX) /
+                centerX) * 3;
+
+
+            card.style.transform =
+                `perspective(700px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function() {
+
+            card.style.transform = "";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        if (
+            window.innerWidth > 800
+        ) {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
