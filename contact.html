@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | Sir Himanshu's Tabela</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(40, 190, 100, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(30, 150, 80, 0.10),
+            transparent 30%
+        ),
+        #07130d;
+
+    color: white;
+
+    overflow-x: hidden;
+
+    cursor: none;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(55, 255, 130, 0.10);
+
+    filter: blur(100px);
+
+    top: -220px;
+    left: -180px;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    animation:
+        glowMove1 10s ease-in-out infinite alternate;
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(40, 210, 100, 0.08);
+
+    filter: blur(100px);
+
+    right: -200px;
+    bottom: -200px;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    animation:
+        glowMove2 12s ease-in-out infinite alternate;
+}
+
+
+@keyframes glowMove1 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(160px,120px);
+    }
+}
+
+
+@keyframes glowMove2 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-140px,-110px);
+    }
+}
+
+
+/* =====================================================
+   DECORATIVE CIRCLES
+===================================================== */
+
+.bg-circle {
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(90,255,150,0.13);
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+
+.circle1 {
+
+    width: 190px;
+    height: 190px;
+
+    top: 18%;
+    left: 4%;
+
+    animation:
+        circleRotate 18s linear infinite;
+}
+
+
+.circle2 {
+
+    width: 300px;
+    height: 300px;
+
+    right: 3%;
+    top: 20%;
+
+    animation:
+        circleRotateReverse 24s linear infinite;
+}
+
+
+.circle3 {
+
+    width: 130px;
+    height: 130px;
+
+    left: 14%;
+    bottom: 10%;
+
+    animation:
+        circleFloat 6s ease-in-out infinite;
+}
+
+
+.circle4 {
+
+    width: 220px;
+    height: 220px;
+
+    right: 12%;
+    bottom: 7%;
+
+    animation:
+        circleFloat 8s ease-in-out infinite reverse;
+}
+
+
+@keyframes circleRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes circleRotateReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes circleFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-28px);
+    }
+}
+
+
+/* =====================================================
+   CUSTOM CURSOR
+===================================================== */
+
+.cursor-dot {
+
+    position: fixed;
+
+    width: 9px;
+    height: 9px;
+
+    background:
+        #55ff91;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        0 0 15px
+        rgba(85,255,145,0.9);
+}
+
+
+.cursor-circle {
+
+    position: fixed;
+
+    width: 43px;
+    height: 43px;
+
+    border:
+        1px solid
+        rgba(85,255,145,0.7);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    transform:
+        translate(-50%, -50%);
+
+    transition:
+        width 0.25s ease,
+        height 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.cursor-circle.hover {
+
+    width: 65px;
+    height: 65px;
+
+    border-color:
+        #55ff91;
+
+    background:
+        rgba(85,255,145,0.035);
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    position: fixed;
+
+    top: 15px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 92%;
+    max-width: 1200px;
+
+    min-height: 68px;
+
+    padding:
+        12px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background:
+        rgba(15,35,23,0.72);
+
+    border:
+        1px solid
+        rgba(110,255,160,0.18);
+
+    border-radius: 22px;
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.28),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.05);
+
+    z-index: 1000;
+
+    animation:
+        navbarIntro 0.9s ease forwards;
+
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+@keyframes navbarIntro {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+}
+
+
+.navbar.scrolled {
+
+    background:
+        rgba(8,25,15,0.92);
+
+    border-color:
+        rgba(85,255,145,0.30);
+
+    box-shadow:
+        0 18px 50px
+        rgba(0,0,0,0.4),
+
+        0 0 25px
+        rgba(85,255,145,0.05);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.nav-logo {
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    white-space: nowrap;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+}
+
+
+.nav-logo span {
+
+    color:
+        #e8fff0;
+}
+
+
+.nav-logo strong {
+
+    color:
+        #55ff91;
+}
+
+
+/* =====================================================
+   DESKTOP NAVIGATION
+===================================================== */
+
+.nav-scroll {
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+
+.nav-scroll::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+.nav-link {
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        50px;
+
+    text-decoration:
+        none;
+
+    color:
+        #cce8d5;
+
+    font-size:
+        14px;
+
+    font-weight:
+        500;
+
+    overflow: hidden;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.nav-link:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        rgba(85,255,145,0.09);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   ACTIVE CONTACT
+===================================================== */
+
+.nav-link.active {
+
+    color:
+        #07130d;
+
+    background:
+        #55ff91;
+
+    box-shadow:
+        0 0 20px
+        rgba(85,255,145,0.22);
+}
+
+
+.nav-link.active:hover {
+
+    background:
+        #6cff9f;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   NAV HOVER LINE
+===================================================== */
+
+.nav-link::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        5px;
+
+    width:
+        0;
+
+    height:
+        2px;
+
+    border-radius:
+        20px;
+
+    background:
+        #55ff91;
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.nav-link:hover::after {
+
+    width:
+        35%;
+}
+
+
+.nav-link.active::after {
+
+    display:
+        none;
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.menu-toggle {
+
+    display:
+        none;
+
+    flex-shrink:
+        0;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border-radius:
+        14px;
+
+    border:
+        1px solid
+        rgba(85,255,145,0.22);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    cursor:
+        pointer;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+
+    transition:
+        0.3s ease;
+}
+
+
+.menu-toggle:hover {
+
+    background:
+        rgba(85,255,145,0.10);
+
+    border-color:
+        rgba(85,255,145,0.5);
+}
+
+
+.menu-toggle span {
+
+    display:
+        block;
+
+    width:
+        20px;
+
+    height:
+        2px;
+
+    border-radius:
+        10px;
+
+    background:
+        #71ffa4;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.mobile-menu {
+
+    position:
+        fixed;
+
+    top:
+        91px;
+
+    left:
+        50%;
+
+    width:
+        92%;
+
+    max-width:
+        1200px;
+
+    transform:
+        translateX(-50%)
+        translateY(-15px)
+        scale(0.96);
+
+    padding:
+        12px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        6px;
+
+    background:
+        rgba(8,25,15,0.94);
+
+    border:
+        1px solid
+        rgba(85,255,145,0.18);
+
+    border-radius:
+        20px;
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.45);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index:
+        999;
+}
+
+
+.mobile-menu.open {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+}
+
+
+.mobile-menu a {
+
+    display:
+        block;
+
+    padding:
+        14px 17px;
+
+    border-radius:
+        14px;
+
+    text-decoration:
+        none;
+
+    color:
+        #d7f2df;
+
+    font-size:
+        15px;
+
+    font-weight:
+        500;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.mobile-menu a:hover {
+
+    background:
+        rgba(85,255,145,0.10);
+
+    color:
+        #ffffff;
+
+    transform:
+        translateX(4px);
+}
+
+
+.mobile-menu .mobile-active {
+
+    background:
+        rgba(85,255,145,0.15);
+
+    color:
+        #55ff91;
+
+    border:
+        1px solid
+        rgba(85,255,145,0.15);
+}
+
+
+/* =====================================================
+   HAMBURGER X
+===================================================== */
+
+.menu-toggle.active span:nth-child(1) {
+
+    transform:
+        translateY(7px)
+        rotate(45deg);
+}
+
+
+.menu-toggle.active span:nth-child(2) {
+
+    opacity:
+        0;
+}
+
+
+.menu-toggle.active span:nth-child(3) {
+
+    transform:
+        translateY(-7px)
+        rotate(-45deg);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    text-align:
+        center;
+
+    padding:
+        170px 20px 45px;
+
+    position:
+        relative;
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(45px, 7vw, 82px);
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        4px;
+
+    animation:
+        titleIntro 1s ease forwards;
+}
+
+
+.hero h1 span {
+
+    color:
+        #55ff91;
+}
+
+
+.hero p {
+
+    margin-top:
+        18px;
+
+    color:
+        #b8d6c3;
+
+    font-size:
+        17px;
+
+    animation:
+        subtitleIntro 1s ease 0.25s both;
+}
+
+
+@keyframes titleIntro {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(50px)
+            scale(0.9);
+
+        filter:
+            blur(10px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes subtitleIntro {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   CONTACT GRID
+===================================================== */
+
+.contact-container {
+
+    width:
+        min(1100px, 90%);
+
+    margin:
+        35px auto 80px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        25px;
+}
+
+
+/* =====================================================
+   CONTACT BOX
+===================================================== */
+
+.contact-box {
+
+    position:
+        relative;
+
+    padding:
+        35px;
+
+    min-height:
+        220px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid
+        rgba(120,255,170,0.18);
+
+    border-radius:
+        25px;
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    overflow:
+        hidden;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(80px)
+        scale(0.92);
+
+    animation:
+        boxIntro 0.9s
+        cubic-bezier(.17,.67,.25,1.2)
+        forwards;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* =====================================================
+   BOX INTRO DELAYS
+===================================================== */
+
+.contact-box:nth-child(1) {
+
+    animation-delay:
+        0.45s;
+}
+
+
+.contact-box:nth-child(2) {
+
+    animation-delay:
+        0.65s;
+}
+
+
+.contact-box:nth-child(3) {
+
+    animation-delay:
+        0.85s;
+}
+
+
+.contact-box:nth-child(4) {
+
+    animation-delay:
+        1.05s;
+}
+
+
+.contact-box:nth-child(5) {
+
+    animation-delay:
+        1.25s;
+}
+
+
+@keyframes boxIntro {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(80px)
+            scale(0.92);
+
+        filter:
+            blur(8px);
+    }
+
+    70% {
+
+        transform:
+            translateY(-8px)
+            scale(1.02);
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+/* =====================================================
+   BOX HOVER
+===================================================== */
+
+.contact-box:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    border-color:
+        rgba(85,255,145,0.65);
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,0.35),
+
+        0 0 30px
+        rgba(85,255,145,0.08);
+}
+
+
+.contact-box::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(85,255,145,0.08);
+
+    top:
+        -90px;
+
+    right:
+        -90px;
+
+    transition:
+        0.5s;
+}
+
+
+.contact-box:hover::before {
+
+    width:
+        280px;
+
+    height:
+        280px;
+}
+
+
+/* =====================================================
+   ICON CIRCLE
+===================================================== */
+
+.icon-circle {
+
+    position:
+        relative;
+
+    width:
+        65px;
+
+    height:
+        65px;
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    font-size:
+        27px;
+
+    background:
+        rgba(85,255,145,0.08);
+
+    border:
+        1px solid
+        rgba(85,255,145,0.4);
+
+    margin-bottom:
+        20px;
+
+    animation:
+        iconFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes iconFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px);
+    }
+}
+
+
+/* =====================================================
+   CONTACT TEXT
+===================================================== */
+
+.contact-box h2 {
+
+    font-size:
+        23px;
+
+    margin-bottom:
+        10px;
+}
+
+
+.contact-box p {
+
+    color:
+        #b7cfc0;
+
+    line-height:
+        1.7;
+
+    font-size:
+        15px;
+}
+
+
+/* =====================================================
+   CONTACT BUTTON
+===================================================== */
+
+.contact-button {
+
+    display:
+        inline-block;
+
+    margin-top:
+        18px;
+
+    padding:
+        11px 20px;
+
+    border-radius:
+        50px;
+
+    border:
+        1px solid
+        rgba(85,255,145,0.5);
+
+    color:
+        #72ffa6;
+
+    text-decoration:
+        none;
+
+    transition:
+        0.3s;
+}
+
+
+.contact-button:hover {
+
+    background:
+        #55ff91;
+
+    color:
+        #07130d;
+
+    box-shadow:
+        0 0 25px
+        rgba(85,255,145,0.4);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   MESSAGE BOX
+===================================================== */
+
+.message-box {
+
+    grid-column:
+        1 / -1;
+
+    text-align:
+        center;
+
+    padding:
+        40px;
+
+    animation-delay:
+        1.25s;
+}
+
+
+.message-box h2 {
+
+    font-size:
+        30px;
+}
+
+
+.message-box p {
+
+    max-width:
+        650px;
+
+    margin:
+        12px auto;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    text-align:
+        center;
+
+    padding:
+        25px;
+
+    color:
+        #769083;
+
+    font-size:
+        13px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 760px) {
+
+    body {
+
+        cursor:
+            auto;
+    }
+
+
+    .cursor-dot,
+    .cursor-circle {
+
+        display:
+            none;
+    }
+
+
+    .navbar {
+
+        top:
+            9px;
+
+        width:
+            94%;
+
+        min-height:
+            58px;
+
+        padding:
+            8px 10px;
+
+        border-radius:
+            18px;
+    }
+
+
+    .nav-logo {
+
+        font-size:
+            15px;
+
+        max-width:
+            190px;
+    }
+
+
+    .nav-scroll {
+
+        display:
+            none;
+    }
+
+
+    .menu-toggle {
+
+        display:
+            flex;
+
+        margin-left:
+            auto;
+    }
+
+
+    .mobile-menu {
+
+        top:
+            76px;
+
+        width:
+            94%;
+    }
+
+
+    .hero {
+
+        padding:
+            125px 20px 40px;
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            2px;
+    }
+
+
+    .hero p {
+
+        font-size:
+            14px;
+    }
+
+
+    .contact-container {
+
+        grid-template-columns:
+            1fr;
+
+        width:
+            88%;
+    }
+
+
+    .message-box {
+
+        grid-column:
+            auto;
+    }
+
+
+    .contact-box {
+
+        min-height:
+            190px;
+
+        padding:
+            28px;
+    }
+
+
+    .circle1,
+    .circle2,
+    .circle3,
+    .circle4 {
+
+        opacity:
+            0.45;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 430px) {
+
+    .nav-logo {
+
+        font-size:
+            13px;
+    }
+
+
+    .menu-toggle {
+
+        width:
+            42px;
+
+        height:
+            42px;
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            40px;
+    }
+
+
+    .hero p {
+
+        font-size:
+            13px;
+    }
+
+
+    .contact-container {
+
+        width:
+            90%;
+    }
+
+
+    .contact-box {
+
+        padding:
+            24px;
+
+        border-radius:
+            21px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND CIRCLES
+===================================================== -->
+
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+<div class="bg-circle circle3"></div>
+<div class="bg-circle circle4"></div>
+
+
+<!-- =====================================================
+     CUSTOM CURSOR
+===================================================== -->
+
+<div class="cursor-dot"></div>
+<div class="cursor-circle"></div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar" id="navbar">
+
+
+    <div class="nav-logo">
+
+        <span>Sir Himanshu's</span>
+
+        <strong>Tabela</strong>
+
+    </div>
+
+
+    <div class="nav-scroll">
+
+
+        <a href="index.html"
+           class="nav-link">
+
+            Home
+
+        </a>
+
+
+        <a href="cows.html"
+           class="nav-link">
+
+            Cows
+
+        </a>
+
+
+        <a href="products.html"
+           class="nav-link">
+
+            Products
+
+        </a>
+
+
+        <a href="farm.html"
+           class="nav-link">
+
+            Our Farm
+
+        </a>
+
+
+        <a href="Meet.html"
+           class="nav-link">
+
+            Meet Sir
+
+        </a>
+
+
+        <a href="contact.html"
+           class="nav-link active">
+
+            Contact
+
+        </a>
+
+
+    </div>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+</nav>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu"
+     id="mobileMenu">
+
+
+    <a href="index.html">
+
+        Home
+
+    </a>
+
+
+    <a href="cows.html">
+
+        Cows
+
+    </a>
+
+
+    <a href="products.html">
+
+        Products
+
+    </a>
+
+
+    <a href="farm.html">
+
+        Our Farm
+
+    </a>
+
+
+    <a href="Meet.html">
+
+        Meet Sir
+
+    </a>
+
+
+    <a href="contact.html"
+       class="mobile-active">
+
+        Contact
+
+    </a>
+
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <h1>
+
+        CONTACT
+        <span>US</span>
+
+    </h1>
+
+
+    <p>
+
+        Have a question?
+        Get in touch with Sir Himanshu's Tabela.
+
+    </p>
+
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT SECTION
+===================================================== -->
+
+<section class="contact-container">
+
+
+    <!-- PHONE -->
+
+    <div class="contact-box hover-target">
+
+
+        <div class="icon-circle">
+
+            ☎
+
+        </div>
+
+
+        <h2>
+
+            Call Us
+
+        </h2>
+
+
+        <p>
+
+            Speak directly with us for enquiries,
+            farm information and other details.
+
+        </p>
+
+
+        <a
+            href="tel:+917004598312"
+            class="contact-button">
+
+            Call Now
+
+        </a>
+
+
+    </div>
+
+
+    <!-- WHATSAPP -->
+
+    <div class="contact-box hover-target">
+
+
+        <div class="icon-circle">
+
+            💬
+
+        </div>
+
+
+        <h2>
+
+            WhatsApp
+
+        </h2>
+
+
+        <p>
+
+            Chat with us directly on WhatsApp
+            for enquiries and farm information.
+
+        </p>
+
+
+        <a
+            href="https://wa.me/917004598312"
+            class="contact-button"
+            target="_blank"
+            rel="noopener">
+
+            Chat on WhatsApp
+
+        </a>
+
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="contact-box hover-target">
+
+
+        <div class="icon-circle">
+
+            📍
+
+        </div>
+
+
+        <h2>
+
+            Visit Our Farm
+
+        </h2>
+
+
+        <p>
+
+            Come and visit Tabela to see our cows,
+            farm environment and dairy activities.
+
+        </p>
+
+
+        <a
+            href="#"
+            class="contact-button">
+
+            View Location
+
+        </a>
+
+
+    </div>
+
+
+    <!-- FARM TIMINGS -->
+
+    <div class="contact-box hover-target">
+
+
+        <div class="icon-circle">
+
+            ◷
+
+        </div>
+
+
+        <h2>
+
+            Farm Timings
+
+        </h2>
+
+
+        <p>
+
+            Monday – Sunday
+            <br>
+
+            6:00 AM – 7:00 PM
+
+        </p>
+
+
+        <span class="contact-button">
+
+            Open Every Day
+
+        </span>
+
+
+    </div>
+
+
+    <!-- FINAL MESSAGE -->
+
+    <div class="contact-box message-box hover-target">
+
+
+        <div
+            class="icon-circle"
+            style="
+                margin-left:auto;
+                margin-right:auto;
+            ">
+
+            🐄
+
+        </div>
+
+
+        <h2>
+
+            Let's Connect
+
+        </h2>
+
+
+        <p>
+
+            Whether you want to know about our cows,
+            dairy products or the farm, we are here to help.
+
+        </p>
+
+
+        <a
+            href="https://wa.me/917004598312"
+            class="contact-button"
+            target="_blank"
+            rel="noopener">
+
+            Contact Tabela
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Sir Himanshu's Tabela
+    — All Rights Reserved
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CUSTOM CURSOR
+===================================================== */
+
+const cursorDot =
+    document.querySelector(".cursor-dot");
+
+const cursorCircle =
+    document.querySelector(".cursor-circle");
+
+
+let mouseX = 0;
+let mouseY = 0;
+
+let circleX = 0;
+let circleY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+
+        cursorDot.style.left =
+            mouseX + "px";
+
+        cursorDot.style.top =
+            mouseY + "px";
+
+    }
+);
+
+
+function animateCursor() {
+
+    circleX +=
+        (mouseX - circleX) * 0.15;
+
+    circleY +=
+        (mouseY - circleY) * 0.15;
+
+
+    cursorCircle.style.left =
+        circleX + "px";
+
+    cursorCircle.style.top =
+        circleY + "px";
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+}
+
+
+animateCursor();
+
+
+/* =====================================================
+   CURSOR HOVER
+===================================================== */
+
+const hoverElements =
+    document.querySelectorAll(
+        "a, button, .contact-box, .icon-circle"
+    );
+
+
+hoverElements.forEach(
+    function(element) {
+
+        element.addEventListener(
+            "mouseenter",
+            function() {
+
+                cursorCircle.classList.add(
+                    "hover"
+                );
+
+            }
+        );
+
+
+        element.addEventListener(
+            "mouseleave",
+            function() {
+
+                cursorCircle.classList.remove(
+                    "hover"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CLICK RIPPLE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function(e) {
+
+
+        const ripple =
+            document.createElement("div");
+
+
+        ripple.style.position =
+            "fixed";
+
+        ripple.style.left =
+            e.clientX + "px";
+
+        ripple.style.top =
+            e.clientY + "px";
+
+        ripple.style.width =
+            "8px";
+
+        ripple.style.height =
+            "8px";
+
+        ripple.style.border =
+            "1px solid #55ff91";
+
+        ripple.style.borderRadius =
+            "50%";
+
+        ripple.style.pointerEvents =
+            "none";
+
+        ripple.style.transform =
+            "translate(-50%, -50%)";
+
+        ripple.style.zIndex =
+            "9997";
+
+
+        document.body.appendChild(
+            ripple
+        );
+
+
+        ripple.animate(
+
+            [
+
+                {
+                    width: "8px",
+                    height: "8px",
+                    opacity: 0.9
+                },
+
+                {
+                    width: "90px",
+                    height: "90px",
+                    opacity: 0
+                }
+
+            ],
+
+            {
+
+                duration: 600,
+
+                easing: "ease-out"
+
+            }
+
+        );
+
+
+        setTimeout(
+            function() {
+
+                ripple.remove();
+
+            },
+            600
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuToggle =
+    document.getElementById(
+        "menuToggle"
+    );
+
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+menuToggle.addEventListener(
+    "click",
+    function() {
+
+        menuToggle.classList.toggle(
+            "active"
+        );
+
+        mobileMenu.classList.toggle(
+            "open"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE MOBILE MENU
+===================================================== */
+
+document
+    .querySelectorAll(
+        ".mobile-menu a"
+    )
+    .forEach(
+        function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    menuToggle.classList.remove(
+                        "active"
+                    );
+
+                    mobileMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   NAVBAR SCROLL EFFECT
+===================================================== */
+
+const navbar =
+    document.getElementById(
+        "navbar"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        if (window.scrollY > 30) {
+
+            navbar.classList.add(
+                "scrolled"
+            );
+
+        }
+
+        else {
+
+            navbar.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   NAVIGATION RIPPLE
+===================================================== */
+
+document
+    .querySelectorAll(
+        ".nav-link, .mobile-menu a"
+    )
+    .forEach(
+        function(link) {
+
+
+            link.addEventListener(
+                "click",
+                function(e) {
+
+
+                    const ripple =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    ripple.style.position =
+                        "absolute";
+
+
+                    ripple.style.width =
+                        "8px";
+
+
+                    ripple.style.height =
+                        "8px";
+
+
+                    ripple.style.borderRadius =
+                        "50%";
+
+
+                    ripple.style.background =
+                        "rgba(85,255,145,0.5)";
+
+
+                    ripple.style.pointerEvents =
+                        "none";
+
+
+                    const rect =
+                        link.getBoundingClientRect();
+
+
+                    ripple.style.left =
+                        (
+                            e.clientX -
+                            rect.left
+                        ) + "px";
+
+
+                    ripple.style.top =
+                        (
+                            e.clientY -
+                            rect.top
+                        ) + "px";
+
+
+                    ripple.style.transform =
+                        "translate(-50%, -50%)";
+
+
+                    link.style.position =
+                        "relative";
+
+
+                    link.style.overflow =
+                        "hidden";
+
+
+                    link.appendChild(
+                        ripple
+                    );
+
+
+                    ripple.animate(
+
+                        [
+
+                            {
+                                width: "8px",
+                                height: "8px",
+                                opacity: 0.8
+                            },
+
+                            {
+                                width: "180px",
+                                height: "180px",
+                                opacity: 0
+                            }
+
+                        ],
+
+                        {
+
+                            duration: 500,
+
+                            easing: "ease-out"
+
+                        }
+
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            ripple.remove();
+
+                        },
+                        500
+                    );
+
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
