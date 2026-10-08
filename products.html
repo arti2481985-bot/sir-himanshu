@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | Sir Himanshu's Tabela</title>
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#06140c;
+    color:white;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(65,210,100,.20),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(38,170,80,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #031009,
+            #082116,
+            #04140c
+        );
+}
+
+.background::before{
+    content:"";
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border-radius:50%;
+
+    background:rgba(78,255,112,.07);
+
+    filter:blur(35px);
+
+    top:-190px;
+    left:-160px;
+
+    animation:blobOne 10s ease-in-out infinite alternate;
+}
+
+.background::after{
+    content:"";
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(69,255,112,.055);
+
+    filter:blur(40px);
+
+    right:-180px;
+    bottom:-190px;
+
+    animation:blobTwo 12s ease-in-out infinite alternate;
+}
+
+@keyframes blobOne{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(120px,80px) scale(1.15);
+    }
+}
+
+@keyframes blobTwo{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(-100px,-80px) scale(1.1);
+    }
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle{
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#8cffaa;
+
+    opacity:.45;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+    animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+
+    0%{
+        transform:translateY(110vh) translateX(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.5;
+    }
+
+    80%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:translateY(-10vh) translateX(50px);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor{
+    position:fixed;
+
+    width:18px;
+    height:18px;
+
+    border:2px solid #a6ffb7;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 12px rgba(115,255,143,.8),
+        0 0 30px rgba(115,255,143,.3);
+
+    transition:
+        width .2s ease,
+        height .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.cursor-dot{
+    position:fixed;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#e0ffe5;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:0 0 12px #8cffaa;
+}
+
+.cursor.active{
+    width:48px;
+    height:48px;
+
+    background:rgba(115,255,143,.10);
+
+    border-color:#baffc6;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-wrapper{
+    position:fixed;
+
+    top:18px;
+    left:0;
+    width:100%;
+
+    padding:0 5%;
+
+    z-index:1000;
+
+    display:flex;
+    justify-content:center;
+}
+
+nav{
+    width:min(1180px,100%);
+
+    min-height:68px;
+
+    padding:9px 12px 9px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.105),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(174,255,190,.18);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.07);
+
+    transition:.35s;
+}
+
+nav.scrolled{
+    background:rgba(3,20,11,.86);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.38),
+        0 0 25px rgba(100,255,130,.05);
+}
+
+/* LOGO */
+
+.logo{
+    text-decoration:none;
+
+    color:#eaffed;
+
+    font-size:19px;
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#7cff9b;
+
+    text-shadow:
+        0 0 15px rgba(124,255,155,.3);
+}
+
+/* DESKTOP MENU */
+
+.nav-links{
+    list-style:none;
+
+    display:flex;
+    align-items:center;
+
+    gap:5px;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    padding:11px 14px;
+
+    color:#d6e8da;
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:500;
+
+    border-radius:13px;
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        transform .3s ease;
+}
+
+.nav-links a:hover{
+    color:#a6ffb7;
+
+    background:rgba(119,255,143,.08);
+
+    transform:translateY(-1px);
+}
+
+.nav-links a.active{
+    color:#07140b;
+
+    background:#88ffa2;
+
+    box-shadow:
+        0 5px 20px rgba(124,255,155,.16);
+}
+
+.nav-links a.active:hover{
+    color:#07140b;
+
+    background:#98ffae;
+}
+
+/* NAV BUTTON */
+
+.nav-cta{
+    margin-left:7px;
+
+    padding:11px 17px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#06130a;
+
+    background:linear-gradient(
+        135deg,
+        #9bffaf,
+        #68f58a
+    );
+
+    font-size:13px;
+    font-weight:700;
+
+    box-shadow:
+        0 7px 22px rgba(100,255,130,.15);
+
+    transition:.3s;
+}
+
+.nav-cta:hover{
+    transform:translateY(-2px) scale(1.02);
+
+    box-shadow:
+        0 10px 28px rgba(100,255,130,.25);
+}
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+    display:none;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(160,255,177,.2);
+
+    border-radius:13px;
+
+    background:rgba(124,255,151,.07);
+
+    cursor:pointer;
+
+    position:relative;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.menu-toggle span{
+    display:block;
+
+    width:20px;
+    height:2px;
+
+    background:#baffc8;
+
+    border-radius:5px;
+
+    transition:.3s;
+}
+
+.menu-toggle.open span:nth-child(1){
+    transform:translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.open span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:72vh;
+
+    padding:
+        150px 20px 70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.badge{
+    padding:9px 18px;
+
+    border-radius:50px;
+
+    color:#b4ffc2;
+
+    background:rgba(113,255,138,.06);
+
+    border:1px solid rgba(142,255,163,.22);
+
+    font-size:12px;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:25px;
+
+    animation:fadeDown 1s ease;
+}
+
+.hero h1{
+    font-size:clamp(48px,8vw,90px);
+
+    line-height:.98;
+
+    margin-bottom:24px;
+
+    letter-spacing:-2px;
+
+    animation:titleIn 1s ease;
+}
+
+.hero h1 span{
+    color:#7cff9b;
+
+    text-shadow:
+        0 0 18px rgba(124,255,155,.35),
+        0 0 45px rgba(124,255,155,.12);
+}
+
+.hero p{
+    max-width:700px;
+
+    color:#aebfb3;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    animation:fadeUp 1.2s ease;
+}
+
+@keyframes titleIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.94);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products-section{
+    padding:30px 6% 100px;
+}
+
+.section-heading{
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-heading h2{
+    font-size:39px;
+
+    margin-bottom:12px;
+}
+
+.section-heading h2 span{
+    color:#7cff9b;
+}
+
+.section-heading p{
+    color:#8fa497;
+
+    font-size:14px;
+}
+
+/* GRID */
+
+.products-grid{
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:28px;
+}
+
+/* CARD */
+
+.product-card{
+    position:relative;
+
+    min-height:425px;
+
+    padding:26px;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(168,255,185,.14);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.22),
+        inset 0 1px rgba(255,255,255,.06);
+
+    transition:
+        border .35s ease,
+        box-shadow .35s ease,
+        transform .2s ease;
+
+    transform-style:preserve-3d;
+}
+
+.product-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:rgba(91,255,124,.07);
+
+    filter:blur(28px);
+
+    top:-90px;
+    right:-80px;
+
+    transition:.5s;
+}
+
+.product-card:hover{
+    border-color:rgba(124,255,155,.38);
+
+    box-shadow:
+        0 30px 75px rgba(0,0,0,.35),
+        0 0 30px rgba(84,255,119,.07);
+}
+
+.product-card:hover::before{
+    transform:scale(1.5);
+}
+
+/* SHINE */
+
+.product-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+    left:-80%;
+
+    width:50%;
+    height:300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.06),
+            transparent
+        );
+
+    transform:rotate(20deg);
+
+    transition:1s;
+
+    pointer-events:none;
+}
+
+.product-card:hover::after{
+    left:140%;
+}
+
+/* NUMBER */
+
+.product-number{
+    position:absolute;
+
+    top:18px;
+    right:20px;
+
+    width:33px;
+    height:33px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    color:#a3ffb5;
+
+    font-size:11px;
+
+    background:rgba(124,255,151,.07);
+
+    border:1px solid rgba(124,255,151,.2);
+}
+
+/* ICON */
+
+.product-icon{
+    width:92px;
+    height:92px;
+
+    margin:
+        5px 0 24px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:25px;
+
+    font-size:48px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(119,255,145,.15),
+            rgba(119,255,145,.03)
+        );
+
+    border:1px solid rgba(136,255,158,.18);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
+
+    transition:.45s;
+}
+
+.product-card:hover .product-icon{
+    transform:
+        translateY(-6px)
+        rotate(-4deg)
+        scale(1.07);
+}
+
+/* TEXT */
+
+.product-card h3{
+    font-size:24px;
+
+    margin-bottom:10px;
+
+    color:#ecfff0;
+}
+
+.product-card p{
+    color:#a5b9aa;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+    min-height:72px;
+}
+
+/* PRICE */
+
+.price{
+    margin-top:22px;
+
+    padding-top:18px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.price strong{
+    font-size:21px;
+
+    color:#8dffa5;
+}
+
+.price small{
+    color:#7f9285;
+
+    font-size:12px;
+}
+
+/* BUTTON */
+
+.product-button{
+    display:inline-flex;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    padding:11px 18px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(126,255,151,.25);
+
+    color:#baffc7;
+
+    background:rgba(105,255,131,.06);
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+.product-button:hover{
+    background:#7cff9b;
+
+    color:#06150b;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(124,255,155,.2);
+}
+
+/* =========================================================
+   INFORMATION BOX
+========================================================= */
+
+.info{
+    max-width:1000px;
+
+    margin:
+        0 auto 100px;
+
+    padding:42px;
+
+    border-radius:28px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(163,255,178,.12);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+}
+
+.info h2{
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.info h2 span{
+    color:#7cff9b;
+}
+
+.info p{
+    max-width:760px;
+
+    margin:auto;
+
+    color:#a8baad;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    border-top:
+        1px solid rgba(155,255,174,.1);
+
+    padding:38px 20px;
+
+    text-align:center;
+
+    background:rgba(0,0,0,.20);
+}
+
+footer h3{
+    color:#aaffba;
+
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#728578;
+
+    font-size:13px;
+}
+
+.created{
+    margin-top:14px;
+
+    color:#617266;
+
+    font-size:12px;
+}
+
+.created span{
+    color:#8effa5;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:950px){
+
+    .products-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .nav-links{
+        gap:2px;
+    }
+
+    .nav-links a{
+        padding:10px 9px;
+        font-size:12px;
+    }
+
+    .nav-cta{
+        padding:10px 12px;
+    }
+}
+
+/* =========================================================
+   TABLET / MOBILE NAV
+========================================================= */
+
+@media(max-width:760px){
+
+    body{
+        cursor:auto;
+    }
+
+    .cursor,
+    .cursor-dot{
+        display:none;
+    }
+
+    .nav-wrapper{
+        top:12px;
+
+        padding:0 14px;
+    }
+
+    nav{
+        min-height:62px;
+
+        padding:
+            8px 9px 8px 17px;
+
+        border-radius:19px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-links{
+        position:absolute;
+
+        top:calc(100% + 10px);
+
+        left:0;
+        right:0;
+
+        padding:10px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:4px;
+
+        border-radius:20px;
+
+        background:
+            rgba(4,23,12,.94);
+
+        border:
+            1px solid rgba(161,255,179,.15);
+
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.35);
+
+        opacity:0;
+
+        visibility:hidden;
+
+        transform:
+            translateY(-10px)
+            scale(.98);
+
+        transition:.3s;
+    }
+
+    .nav-links.open{
+        opacity:1;
+
+        visibility:visible;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        width:100%;
+
+        padding:13px 15px;
+
+        border-radius:13px;
+
+        font-size:13px;
+    }
+
+    .nav-links a.active{
+        background:rgba(124,255,155,.14);
+
+        color:#9dffb1;
+
+        box-shadow:none;
+
+        border:
+            1px solid rgba(124,255,155,.12);
+    }
+
+    .nav-cta{
+        display:none;
+    }
+
+    .hero{
+        min-height:58vh;
+
+        padding:
+            125px 20px 60px;
+    }
+
+    .hero h1{
+        font-size:
+            clamp(45px,13vw,65px);
+    }
+
+    .hero p{
+        font-size:14px;
+
+        max-width:600px;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media(max-width:560px){
+
+    .products-section{
+        padding:
+            25px 5% 80px;
+    }
+
+    .products-grid{
+        grid-template-columns:1fr;
+
+        gap:22px;
+    }
+
+    .product-card{
+        min-height:auto;
+
+        padding:24px;
+
+        border-radius:23px;
+    }
+
+    .product-card p{
+        min-height:auto;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+
+    .section-heading p{
+        line-height:1.6;
+    }
+
+    .info{
+        margin:
+            0 5% 70px;
+
+        padding:30px 22px;
+
+        border-radius:23px;
+    }
+
+    .info h2{
+        font-size:26px;
+    }
+
+    footer{
+        padding:32px 18px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .menu-toggle{
+        width:40px;
+        height:40px;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .product-icon{
+        width:82px;
+        height:82px;
+
+        font-size:42px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     BACKGROUND
+======================================================= -->
+
+<div class="background"></div>
+
+
+<!-- =======================================================
+     PARTICLES
+======================================================= -->
+
+<div class="particle"
+     style="left:5%;animation-duration:11s;"></div>
+
+<div class="particle"
+     style="left:13%;animation-duration:15s;animation-delay:2s;"></div>
+
+<div class="particle"
+     style="left:24%;animation-duration:13s;animation-delay:4s;"></div>
+
+<div class="particle"
+     style="left:36%;animation-duration:17s;animation-delay:1s;"></div>
+
+<div class="particle"
+     style="left:48%;animation-duration:12s;animation-delay:5s;"></div>
+
+<div class="particle"
+     style="left:60%;animation-duration:16s;animation-delay:3s;"></div>
+
+<div class="particle"
+     style="left:72%;animation-duration:14s;animation-delay:7s;"></div>
+
+<div class="particle"
+     style="left:84%;animation-duration:18s;animation-delay:2s;"></div>
+
+<div class="particle"
+     style="left:94%;animation-duration:12s;animation-delay:6s;"></div>
+
+
+<!-- =======================================================
+     CURSOR
+======================================================= -->
+
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<div class="nav-wrapper">
+
+<nav id="navbar">
+
+    <a href="index.html" class="logo">
+        Sir Himanshu's <span>Tabela</span>
+    </a>
+
+
+    <ul class="nav-links" id="navLinks">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="cows.html">
+                Cows
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html" class="active">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="farm.html">
+                Farm
+            </a>
+        </li>
+
+        <li>
+            <a href="Meet.html">
+                Meet Sir
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+
+    <a href="contact.html" class="nav-cta">
+        Contact Us
+    </a>
+
+
+    <!-- MOBILE MENU -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</nav>
+
+</div>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+    <div class="badge">
+        PURE • FRESH • FARM MADE
+    </div>
+
+    <h1>
+        Our <span>Products</span>
+    </h1>
+
+    <p>
+        Quality dairy and cattle-farm products prepared
+        with care at Sir Himanshu's Tabela.
+        Freshness, quality and trust in every product.
+    </p>
+
+</section>
+
+
+<!-- =======================================================
+     PRODUCTS
+======================================================= -->
+
+<section class="products-section">
+
+    <div class="section-heading reveal">
+
+        <h2>
+            Farm <span>Products</span>
+        </h2>
+
+        <p>
+            Fresh products from our farm to your home
+        </p>
+
+    </div>
+
+
+    <div class="products-grid">
+
+
+        <!-- =================================================
+             PRODUCT 1
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                01
+            </div>
+
+            <div class="product-icon">
+                🥛
+            </div>
+
+            <h3>
+                Fresh Cow Milk
+            </h3>
+
+            <p>
+                Fresh and wholesome cow milk collected
+                from healthy cows at our tabela.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹60
+                </strong>
+
+                <small>
+                    per litre
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT 2
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                02
+            </div>
+
+            <div class="product-icon">
+                🧈
+            </div>
+
+            <h3>
+                Pure Desi Ghee
+            </h3>
+
+            <p>
+                Rich and aromatic traditional ghee made
+                from quality dairy ingredients.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹650
+                </strong>
+
+                <small>
+                    per kg
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT 3
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                03
+            </div>
+
+            <div class="product-icon">
+                🥣
+            </div>
+
+            <h3>
+                Fresh Curd
+            </h3>
+
+            <p>
+                Smooth and fresh curd prepared using
+                quality milk from the farm.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹80
+                </strong>
+
+                <small>
+                    per kg
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT 4
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                04
+            </div>
+
+            <div class="product-icon">
+                🧀
+            </div>
+
+            <h3>
+                Fresh Paneer
+            </h3>
+
+            <p>
+                Soft and fresh paneer prepared from
+                quality milk for a rich taste.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹360
+                </strong>
+
+                <small>
+                    per kg
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT 5
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                05
+            </div>
+
+            <div class="product-icon">
+                🥤
+            </div>
+
+            <h3>
+                Fresh Lassi
+            </h3>
+
+            <p>
+                Refreshing dairy drink prepared using
+                fresh curd and quality ingredients.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹50
+                </strong>
+
+                <small>
+                    per glass
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT 6
+        ================================================== -->
+
+        <div class="product-card reveal">
+
+            <div class="product-number">
+                06
+            </div>
+
+            <div class="product-icon">
+                🌾
+            </div>
+
+            <h3>
+                Cattle Feed
+            </h3>
+
+            <p>
+                Nutritious cattle feed selected to support
+                the healthy growth of farm animals.
+            </p>
+
+            <div class="price">
+
+                <strong>
+                    ₹35
+                </strong>
+
+                <small>
+                    per kg
+                </small>
+
+            </div>
+
+            <a href="contact.html"
+               class="product-button">
+
+                Enquire Now →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     QUALITY SECTION
+======================================================= -->
+
+<section class="info reveal">
+
+    <h2>
+        Quality You Can <span>Trust</span>
+    </h2>
+
+    <p>
+        At Sir Himanshu's Tabela, we focus on maintaining
+        cleanliness, proper animal care and quality products.
+        Our aim is to provide fresh farm products while
+        maintaining the trust of our customers.
+    </p>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    <h3>
+        Sir Himanshu's Tabela
+    </h3>
+
+    <p>
+        Freshness • Quality • Care
+    </p>
+
+    <div class="created">
+        Website created by
+        <span>Tanishk Kumar</span>
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+/* MOBILE MENU */
+
+menuToggle.addEventListener(
+    "click",
+    function(){
+
+        navLinks.classList.toggle("open");
+
+        menuToggle.classList.toggle("open");
+
+    }
+);
+
+
+/* CLOSE MOBILE MENU AFTER CLICK */
+
+const navigationLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+navigationLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function(){
+
+            navLinks.classList.remove("open");
+
+            menuToggle.classList.remove("open");
+
+        }
+    );
+
+});
+
+
+/* NAVBAR SCROLL EFFECT */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        if(window.scrollY > 30){
+
+            navbar.classList.add("scrolled");
+
+        }else{
+
+            navbar.classList.remove("scrolled");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor =
+    document.querySelector(".cursor");
+
+const dot =
+    document.querySelector(".cursor-dot");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let cursorX = 0;
+let cursorY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dot.style.left =
+            mouseX + "px";
+
+        dot.style.top =
+            mouseY + "px";
+
+    }
+);
+
+
+function animateCursor(){
+
+    cursorX +=
+        (mouseX - cursorX) * .15;
+
+    cursorY +=
+        (mouseY - cursorY) * .15;
+
+    cursor.style.left =
+        cursorX + "px";
+
+    cursor.style.top =
+        cursorY + "px";
+
+    requestAnimationFrame(
+        animateCursor
+    );
+}
+
+animateCursor();
+
+
+/* CURSOR HOVER EFFECT */
+
+const interactive =
+    document.querySelectorAll(
+        "a, button, .product-card"
+    );
+
+interactive.forEach(element => {
+
+    element.addEventListener(
+        "mouseenter",
+        function(){
+
+            cursor.classList.add(
+                "active"
+            );
+
+        }
+    );
+
+    element.addEventListener(
+        "mouseleave",
+        function(){
+
+            cursor.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PRODUCT 3D TILT
+========================================================= */
+
+const cards =
+    document.querySelectorAll(
+        ".product-card"
+    );
+
+
+cards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        function(e){
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                e.clientX - rect.left;
+
+            const y =
+                e.clientY - rect.top;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 5;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -5;
+
+            card.style.transform =
+                `
+                translateY(-10px)
+                perspective(900px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                `;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function(){
+
+            card.style.transform =
+                `
+                translateY(0)
+                perspective(900px)
+                rotateX(0deg)
+                rotateY(0deg)
+                `;
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLICK RIPPLE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const ripple =
+            document.createElement(
+                "span"
+            );
+
+        ripple.style.position =
+            "fixed";
+
+        ripple.style.left =
+            e.clientX + "px";
+
+        ripple.style.top =
+            e.clientY + "px";
+
+        ripple.style.width =
+            "10px";
+
+        ripple.style.height =
+            "10px";
+
+        ripple.style.borderRadius =
+            "50%";
+
+        ripple.style.border =
+            "1px solid rgba(130,255,155,.7)";
+
+        ripple.style.pointerEvents =
+            "none";
+
+        ripple.style.zIndex =
+            "9998";
+
+        ripple.style.transform =
+            "translate(-50%,-50%)";
+
+
+        document.body.appendChild(
+            ripple
+        );
+
+
+        ripple.animate(
+            [
+                {
+                    width:"10px",
+                    height:"10px",
+                    opacity:".8"
+                },
+
+                {
+                    width:"100px",
+                    height:"100px",
+                    opacity:"0"
+                }
+            ],
+            {
+                duration:600,
+                easing:"ease-out"
+            }
+        );
+
+
+        setTimeout(
+            () => ripple.remove(),
+            600
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
